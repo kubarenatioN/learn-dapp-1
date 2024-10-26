@@ -54,5 +54,34 @@ contract('decBank', accounts => {
 
       assert.equal(balance, tokens(1e6));
     })
+  });
+
+  describe('Yield Farming', async () => {
+    it('rewards tokens for stacking', async () => {
+      let result;
+
+      result = await tether.balances(accounts[1]);
+      assert.equal(result, tokens(100));
+
+      // check approval and deposit
+      await tether.approve(decBank.address, tokens(100), {
+        from: accounts[1]
+      });
+
+      await decBank.deposit(tokens(100), {
+        from: accounts[1]
+      });
+
+      // check updated balance
+      result = await tether.balances(accounts[1]);
+      assert.equal(result, tokens(0));
+
+      const decBankBalance = await tether.balances(decBank.address);
+      assert.equal(decBankBalance, tokens(100));
+
+      result = await decBank.isStacking(accounts[1]);
+      assert.equal(result, true);
+    })
+
   })
 })
