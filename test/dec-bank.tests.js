@@ -79,8 +79,24 @@ contract('decBank', accounts => {
       const decBankBalance = await tether.balances(decBank.address);
       assert.equal(decBankBalance, tokens(100));
 
-      result = await decBank.isStacking(accounts[1]);
+      result = await decBank.isStaking(accounts[1]);
       assert.equal(result, true);
+
+      await decBank.issueTokens({ from: accounts[0] });
+
+      await decBank.issueTokens({ from: accounts[1] }).should.be.rejected;
+
+      await decBank.unstakeTokens({ from: accounts[1] })
+
+      // check unstaking
+      result = await tether.balances(accounts[1])
+      assert.equal(result.toString(), tokens(100))
+
+      result = await tether.balances(decBank.address);
+      assert.equal(result, tokens(0));
+
+      result = await decBank.isStaking(accounts[1]);
+      assert.equal(result, false);
     })
 
   })

@@ -1,7 +1,15 @@
 import React from 'react';
+import Navbar from './components/Navbar';
+import { useState } from 'react';
 
 export default function App() {
-  console.log('test 1');
+  const [account, setAccount] = useState('0x00')
+  
+  setTimeout(() => {
+    setAccount('0x0333')
+  }, 4000);
 
-  return <div><h1>Test</h1></div>
+  return <div>
+    <Navbar account={account} />
+  </div>
 }

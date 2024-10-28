@@ -5177,12 +5177,12 @@
         }
       },
       "links": {},
-      "address": "0x2b61Cf7b52f99D43341a910133C8B67b7ABD764D",
-      "transactionHash": "0xf00831cbb64fe6fdf3f82d608f32cc4750beea90ad76e6accb277f43a7e80ec3"
+      "address": "0xc05fd6351FAa7dCb28C51B1809126B4e93b298C2",
+      "transactionHash": "0xb4b240638530d3816a7c902307ef17e49125678ec9ae3caf8aed38288d44b2a4"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-10-22T11:01:42.696Z",
+  "updatedAt": "2024-10-28T12:55:57.549Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
